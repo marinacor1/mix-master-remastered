@@ -14,4 +14,12 @@ RSpec.feature "User submits a new artist" do
     expect(page).to have_content artist_name
     expect(page).to have_css("img[src=\"#{artist_image_path}\"]")
   end
+
+  scenario "user cannot leave name blank" do
+    visit '/artists'
+    click_on "New artist"
+    fill_in "artist_name", with: "Tina Turner"
+    click_on "Create Artist"
+    expect(page).to have_content "Image path can't be blank"
+  end
 end

@@ -25,7 +25,6 @@ RSpec.feature "user views all artists" do
     expect(page).to have_css("img[src=\"#{image_path1}\"]")
     expect(page).to have_css("img[src=\"#{image_path2}\"]")
 
-save_and_open_page
     click_on "#{artist1_name}"
     expect(page).to have_content artist1_name
     expect(page).to have_css("img[src=\"#{image_path1}\"]")

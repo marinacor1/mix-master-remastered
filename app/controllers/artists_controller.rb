@@ -21,6 +21,18 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
 
+  def edit
+    @artist = Artist.find(params[:id])
+  end
+
+  def update
+    @artist = Artist.find(params[:id])
+    @artist.update_attributes(artist_params)
+    if @artist.save
+      render :show
+    end
+  end
+
   private
 
     def artist_params

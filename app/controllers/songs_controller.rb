@@ -33,6 +33,11 @@ class SongsController < ApplicationController
     end
   end
 
+  def index
+    @artist = Artist.find(params[:artist_id])
+    @songs = @artist.songs
+  end
+
   private
 
     def song_params

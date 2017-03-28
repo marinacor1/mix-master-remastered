@@ -7,8 +7,11 @@ class SongsController < ApplicationController
   def create
     @artist = Artist.find(params[:artist_id])
     @song = @artist.songs.create(song_params)
-
-    redirect_to song_path(@song)
+    if @song.save
+      redirect_to song_path(@song)
+    else
+      render :new
+    end
   end
 
   def show
@@ -21,11 +24,12 @@ class SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
+    @artist = @song.artist
     @song.update_attributes(song_params)
     if @song.save
       redirect_to @song
     else
-      render :new
+      redirect_to new_artist_song_path(@artist)
     end
   end
 

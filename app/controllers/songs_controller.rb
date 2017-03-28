@@ -38,6 +38,10 @@ class SongsController < ApplicationController
     @songs = @artist.songs.order(title: :asc)
   end
 
+  def destroy
+    render :index
+  end
+
   private
 
     def song_params

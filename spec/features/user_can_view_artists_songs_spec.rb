@@ -16,6 +16,8 @@ RSpec.feature "view songs for artist" do
     expect(page).to have_content song3.title
     #TODO expect(page).to have_css("ul:last_child", "#{song1.title}")
 
+    click_on "#{song2.title}"
+    expect(current_path).to eq(song_path(song2))
     #test for alphabetical songs
   end
 
